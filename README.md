@@ -1,1 +1,2 @@
-# logicmonitor.github.io
+# helm-chart
+helm-chart
