@@ -1,0 +1,100 @@
+accessID: 26nNRy4Z3KZ6cWQTfcIF
+accessKey: >-
+  lma_~FWm=~qaK2+keBk8uK25j]Rani2AzxX4Cyx~5a6^8z%Y=55Ufcb}F2]4A9+7LMzBiOGEwNGItNmE1OC00Y2QxLWFmODMtZDEzMWYxYTk2YWUwL4hq6HI
+account: fujitsu
+clusterName: fclkubernetes
+logLevel: info
+deleteDevices: true
+disableAlerting: false
+enableRBAC: true
+clusterGroupID: 382
+resourceGroupID: 1
+etcdDiscoveryToken: ''
+imageRepository: logicmonitor/argus
+imageTag: v7
+imagePullPolicy: Always
+proxyURL: ''
+proxyUser: ''
+proxyPass: ''
+nodeSelector: {}
+affinity: {}
+priorityClassName: ''
+tolerations: []
+labels: {}
+annotations: {}
+ignore_ssl: false
+registerGenericFilter: false
+app_intervals:
+  periodic_sync_interval: 30m
+  periodic_delete_interval: 10m
+  cache_sync_interval: 1h
+device_group_props:
+  cluster:
+    - name: lmlogs.k8sevent.enable
+      value: 'false'
+    - name: kubernetes.resourcedeleteafterduration
+      value: P1DT0H0M0S
+      override: false
+  pods:
+    - name: lmlogs.k8spodlog.enable
+      value: 'false'
+  services: []
+  deployments: []
+  nodes: []
+  etcd: []
+  hpas: []
+filters:
+  pod: ''
+  service: ''
+  node: ''
+  deployment: ''
+  hpa: ''
+  daemonset: ''
+  replicaset: ''
+  statefulset: ''
+  persistentvolume: ''
+openmetrics:
+  port: 2112
+collector:
+  replicas: '1'
+  size: medium
+  imageRepository: logicmonitor/collector
+  imageTag: latest
+  imagePullPolicy: Always
+  secretName: collector
+  groupID: -1
+  escalationChainID: '3'
+  collectorVersion: 0
+  useEA: false
+  proxyURL: ''
+  proxyUser: ''
+  proxyPass: ''
+  annotations: {}
+  labels: {}
+  statefulsetspec:
+    template:
+      spec:
+        nodeSelector: {}
+        tolerations: []
+        priorityClassName: ''
+disableResourceMonitoring: null
+disableResourceAlerting: null
+replicas: 1
+kube-state-metrics:
+  enabled: true
+  replicas: 1
+  selfMonitor:
+    enabled: true
+    telemetryPort: 8081
+  collectors:
+    - cronjobs
+    - daemonsets
+    - deployments
+    - jobs
+    - nodes
+    - replicasets
+    - statefulsets
+    - persistentvolumes
+    - endpoints
+    - persistentvolumeclaims
+    - pods
